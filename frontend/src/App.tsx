@@ -1,43 +1,25 @@
-import './index.css'
-import data from './api/data'
+import {BrowserRouter, Route, Routes, Link} from 'react-router-dom'
 
-function App() {
+//pages
+import HomeScreen from './pages/HomeScreen'
+import ProductScreen from './pages/ProductScreen'
+
+const App = () => {
 
   return (
-    <>
+    <BrowserRouter>
       <div>
         <header>
-          <a href="/"> Omozon </a>
+          <Link href="/"> Omozon </Link>
         </header>
         <main>
-          <h1>Featured Products</h1>
-          <div className='products'>
-          {
-            data.products.map(product =>(
-              <div className='product' key={product.slug}>
-                <a href={`/product/${product.slug}`}>
-                  <img src={product.image} alt={product.name} />
-                </a>
-                <div className='product-info'>
-                  <a href={`/product/${product.slug}`}>
-                    <p>
-                      {product.name}
-                    </p>
-                  </a>
-                  <p>
-                    <strong>
-                      {product.prices}
-                    </strong>
-                  </p>
-                  <button>Add to cart</button>
-                </div>
-              </div>
-            ))
-          }
-          </div>
+          <Routes>
+            <Route path="/product/:slug" element={<ProductScreen/>}/>
+            <Route path="/" element={<HomeScreen/>}/>
+          </Routes>
         </main>
       </div>
-    </>
+    </BrowserRouter>
   )
 }
 
