@@ -5,6 +5,7 @@ import {Row, Col} from 'react-bootstrap'
 
 //components
 import Product from "../components/Product";
+import { Helmet } from "react-helmet-async";
 
 interface Product {
   slug: string;
@@ -62,6 +63,9 @@ const HomeScreen = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Omozon</title>
+      </Helmet>
       <h1>Featured Products</h1>
       <div className='products'>
         {loading ? (
