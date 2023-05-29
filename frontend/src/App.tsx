@@ -1,4 +1,6 @@
-import {BrowserRouter, Route, Routes, Link} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, NavLink} from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
 
 //pages
 import HomeScreen from './pages/HomeScreen'
@@ -8,16 +10,25 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className='d-flex flex-column site-container'>
         <header>
-          <Link href="/"> Omozon </Link>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+                <Navbar.Brand as={NavLink} to='/' >Omozon</Navbar.Brand>
+            </Container>
+          </Navbar>
         </header>
         <main>
-          <Routes>
-            <Route path="/product/:slug" element={<ProductScreen/>}/>
-            <Route path="/" element={<HomeScreen/>}/>
-          </Routes>
+          <Container>
+            <Routes>
+              <Route path="/product/:slug" element={<ProductScreen/>}/>
+              <Route path="/" element={<HomeScreen/>}/>
+            </Routes>
+          </Container>
         </main>
+        <footer>
+          <div className='text-center'>All rights reserved</div>
+        </footer>
       </div>
     </BrowserRouter>
   )
