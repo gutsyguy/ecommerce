@@ -1,12 +1,12 @@
 import { createContext, useReducer } from 'react';
 
 
-export const Store = createContext<any>();
+export const Store = createContext<any>('');
 
+const cartItemsFromStorage = localStorage.getItem('cartItems');
 const initialState = {
   cart: {
-    cartItems: localStorage.getItem('cartItems')
-    ? JSON.parse(localStorage.getItem('cartItems'))
+    cartItems: cartItemsFromStorage ? JSON.parse(cartItemsFromStorage)
     : [],
   },
 };

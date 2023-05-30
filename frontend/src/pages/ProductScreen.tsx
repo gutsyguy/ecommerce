@@ -79,7 +79,6 @@ const ProductScreen = () => {
   }, [slug]);
 
   const {state, dispatch: ctxDispatch } = useContext<any>(Store);
-  const {cart} = state;
   const addToCartHandler = async () => {
     const { cart } = state;
       if (product){
