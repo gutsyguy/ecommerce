@@ -66,7 +66,7 @@ const HomeScreen = () => {
   return (
     <div>
       <Helmet>
-        <title>Omozon</title>
+        <title>Richard Dickson's Clothing</title>
       </Helmet>
       <h1>Featured Products</h1>
       <div className='products'>

@@ -19,7 +19,7 @@ const App = () => {
         <header>
           <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand as={NavLink} to='/'>Richard Dicksons</Navbar.Brand>
+                <Navbar.Brand as={NavLink} to='/'>Richard Dickson's Clothing</Navbar.Brand>
                 <Nav className="me-auto">
                   <Link to="/cart" className="nav-link">
                     Cart

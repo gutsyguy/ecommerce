@@ -3,8 +3,9 @@ const data = require('./data.js')
 const port = process.env.PORT || 5000;
 const app = express();
 
-// Enable CORS middleware
+// middleware
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -37,11 +38,11 @@ app.get('/api/products/:id', (req, res) => {
   }
 });
 
-//Server production
-if (process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join('frontend/dist')))
-  app.get("*",(req,res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build' , 'index.html')))
-}
+// //Server production
+// if (process.env.NODE_ENV === "production"){
+//   app.use(express.static(path.join('frontend/dist')))
+//   app.get("*",(req,res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build' , 'index.html')))
+// }
 
 app.use((err, req, res, next) =>{
   res.status(500).send({message: err.message})
