@@ -8,6 +8,7 @@ import { useContext } from 'react'
 import HomeScreen from './pages/HomeScreen'
 import ProductScreen from './pages/ProductScreen'
 import { Store } from './Store'
+import CartScreen from './pages/CartScreen'
 
 const App = () => {
   const {state} = useContext<any>(Store)
@@ -36,6 +37,7 @@ const App = () => {
           <Container className='mt-3'>
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen/>}/>
+              <Route path="/cart" element={<CartScreen/>}/>
               <Route path="/" element={<HomeScreen/>}/>
             </Routes>
           </Container>

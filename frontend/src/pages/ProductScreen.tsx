@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useReducer, useContext } from "react";
 import axios from "axios";
 import { Row, Col, ListGroup, Card, Badge, Button } from "react-bootstrap";
@@ -53,6 +53,7 @@ const initialState: State = {
 };
 
 const ProductScreen = () => {
+  const navigate = useNavigate()
   const params = useParams<{ slug: string }>();
   const { slug } = params;
 
@@ -81,11 +82,10 @@ const ProductScreen = () => {
   const {cart} = state;
   const addToCartHandler = async () => {
     const { cart } = state;
-    const addToCartHandler = async () => {
       if (product){
         const existItem = cart.cartItems.find((x:any) => x._id === product._id);
         const quantity = existItem ? existItem.quantity + 1 : 1;
-        const { data } = await axios.get(`/api/products/${product._id}`);
+        const { data } = await axios.get(`http://localhost:5000/api/products/${product._id}`);
         if (data.countInStock < quantity) {
           window.alert('Sorry. Product is out of stock');
           return;
@@ -94,7 +94,7 @@ const ProductScreen = () => {
           type: 'CART_ADD_ITEM',
           payload: { ...product, quantity},
         });
-      }
+        navigate('/cart')
     };
   };
 
